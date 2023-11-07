@@ -4,9 +4,7 @@ import pl.gornik.model.Book;
 import pl.gornik.model.Disc;
 import pl.gornik.model.Toy;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,8 +33,9 @@ public class Main {
         System.out.println("Zrób zakupy! Wybierz produkty które chcesz kupić. Wypisz produktu którego chcesz zakupić.");
         System.out.println();
 
+        boolean czyDalej = true;
 
-        for(int i = 0; i < stanSklepu.size(); i++) {
+        while(czyDalej) {
             System.out.println("Wybierz Produkt.");
             String wybor = scanner.next();
 
@@ -56,9 +55,24 @@ public class Main {
                         break;
                     }
                 }
-
+            }
+            System.out.println("Czy chcesz dodać do koszyka coś jeszcze (wybierz 1) czy chcesz przejść do Koszyka (wybierz 2).");
+            int wybor_end = scanner.nextInt();
+            if(wybor_end == 1) {
+                czyDalej = true;
+            } else if(wybor_end == 2) {
+                czyDalej = false;
+                break;
             }
         }
 
+        for(int i = 0; i < koszyk.size(); i++) {
+            if(koszyk.get(i).getTitle().equals(koszyk.get(i).getTitle())) {
+                System.out.println(koszyk.get(i).displayProduct());
+                System.out.println("tak");
+            } else {
+                System.out.println("nie");
+           }
+        }
     }
 }

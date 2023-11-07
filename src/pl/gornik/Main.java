@@ -66,13 +66,33 @@ public class Main {
             }
         }
 
-        for(int i = 0; i < koszyk.size(); i++) {
-            if(koszyk.get(i).getTitle().equals(koszyk.get(i).getTitle())) {
-                System.out.println(koszyk.get(i).displayProduct());
-                System.out.println("tak");
-            } else {
-                System.out.println("nie");
-           }
+        Map<Produkt, Integer> elementCounts = new HashMap<>();
+        for (Produkt item : koszyk) {
+            elementCounts.put(item, elementCounts.getOrDefault(item, 0) + 1);
         }
+
+        // Clear the original list
+        koszyk.clear();
+
+        // Rebuild the list with merged elements
+        // Rebuild the list with merged elements
+        // Rebuild the list with merged elements
+        for (Map.Entry<Produkt, Integer> entry : elementCounts.entrySet()) {
+            Produkt item = entry.getKey();
+            int count = entry.getValue();
+            // Merge duplicates by appending count to the item name
+            if (count > 1) {
+                for (int i = 1; i <= count; i++) {
+                    String mergedName = item.getTitle() + i; // Tworzymy nową nazwę produktu
+                    Produkt mergedProdukt = new Produkt(mergedName); // Tworzymy nowy obiekt Produkt
+                    koszyk.add(mergedProdukt); // Dodajemy nowy obiekt Produkt do listy
+                }
+            } else {
+                koszyk.add(item);
+            }
+        }
+
+
+
     }
 }

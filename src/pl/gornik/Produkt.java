@@ -1,5 +1,7 @@
 package pl.gornik;
 
+import java.util.Objects;
+
 public class Produkt {
     private String title;
     private int numberOfProductsInStock;
@@ -15,6 +17,9 @@ public class Produkt {
         this(product.title, product.numberOfProductsInStock, product.price);
     }
 
+    public Produkt(String mergedName) {
+
+    }
 
 
     public String displayProduct() {
@@ -49,4 +54,24 @@ public class Produkt {
     //public double countPrice() {
    //     return
     //}
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Objects.hashCode(this.title); // użyj odpowiedniego pola jako klucz
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        Produkt other = (Produkt) obj;
+        return Objects.equals(this.title, other.title); // użyj odpowiedniego pola jako klucz
+    }
 }

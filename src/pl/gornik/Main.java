@@ -62,7 +62,6 @@ public class Main {
                         break;
                     }
                 }
-
             }
             System.out.println("Czy chcesz dodać do koszyka coś jeszcze (wybierz 1) czy chcesz przejść do Koszyka (wybierz 2).");
             int wybor_end = scanner.nextInt();
@@ -81,6 +80,7 @@ public class Main {
             System.out.println("Suma twojego koszyka: "  + suma);
 
         }
+
 
     }
 }

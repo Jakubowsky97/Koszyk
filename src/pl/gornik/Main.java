@@ -10,6 +10,8 @@ public class Main {
     public static void main(String[] args) {
         List<Produkt> stanSklepu = new ArrayList<>();
         List<Produkt> koszyk = new ArrayList<>();
+        List<Double> suma_koszyka = new ArrayList<>();
+
         stanSklepu.add(new Book("Opowieści_z_narni", 20, 49.99, "C.S. Lewis"));
         stanSklepu.add(new Book("Harry_Potter", 50, 35.99, "J.K Rowling"));
         stanSklepu.add(new Book("Metro_2033", 10, 59.99, "Dmitrij Głuchowski"));
@@ -39,7 +41,7 @@ public class Main {
             System.out.println("Wybierz Produkt.");
             String wybor = scanner.next();
             for (int i = 0; i < stanSklepu.size(); i++) {
-                if (!Objects.equals(wybor, stanSklepu.get(i).getTitle())) {
+                if (wybor != stanSklepu.get(i).getTitle()) {
                     i = stanSklepu.size() - 1;
                     System.out.println("Nie posiadamy takiego produktu na stanie");
                 }
@@ -77,9 +79,17 @@ public class Main {
             System.out.println(produkty.getTitle() + ", " + produkty.getNumberOfProductsInStock() + " sztuk, " + produkty.getPrice() + " zł");
 
             double suma = produkty.getPrice() * produkty.getNumberOfProductsInStock();
-            System.out.println("Suma twojego koszyka: "  + suma);
 
+            suma_koszyka.add(suma);
         }
+
+
+        for (Double aDouble : suma_koszyka) {
+            double suma = 0;
+            suma = suma + aDouble;
+        }
+
+
 
 
     }
